@@ -177,7 +177,7 @@ header {
 }
 
 .logo {
-  height: 40px;
+  height: 80px; /* Larger logo in header */
   width: auto;
 }
 
@@ -223,7 +223,7 @@ main {
 }
 
 .hero-logo {
-  height: 60px;
+  height: 120px; /* 20X bigger than before */
   width: auto;
 }
 
@@ -382,7 +382,7 @@ main {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
@@ -560,6 +560,60 @@ main {
 
 .faq-item p {
   color: var(--chrome-silver);
+}
+
+/* Product Detail Sections */
+.product-detail-section {
+  background-color: var(--dark-gray);
+  padding: 5rem 0;
+}
+
+.product-detail-section h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--white);
+}
+
+.product-detail-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.product-detail-content p {
+  color: var(--chrome-silver);
+  margin-bottom: 1.5rem;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Drive-Thru Section */
+.drive-thru-section {
+  background-color: var(--primary-black);
+  padding: 5rem 0;
+  border-top: 1px solid var(--chrome-silver);
+  border-bottom: 1px solid var(--chrome-silver);
+}
+
+.drive-thru-section h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--white);
+}
+
+.drive-thru-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.drive-thru-content p {
+  color: var(--chrome-silver);
+  margin-bottom: 1.5rem;
+  font-size: 18px;
+  line-height: 1.8;
 }
 
 /* Footer */
