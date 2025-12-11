@@ -90,13 +90,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize scroll animations
     initScrollAnimations();
     
-    // Add scroll event listener for header background change
+    // Add scroll event listener for header background change and visibility
+    let lastScrollY = 0;
     window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
+        const heroSection = document.querySelector('.hero-section');
+        const heroHeight = heroSection ? heroSection.offsetHeight : 0;
+        
+        // Change header background when scrolled past 50px
         if (window.scrollY > 50) {
             header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
         } else {
             header.style.backgroundColor = 'var(--primary-black)';
+        }
+        
+        // Show/hide header based on scroll position - show when user starts scrolling down
+        if (window.scrollY > 100) {
+            // User has scrolled down a bit, show the header
+            header.classList.remove('hidden');
+        } else {
+            // User is at the top, hide the header
+            header.classList.add('hidden');
+        }
+        
+        lastScrollY = window.scrollY;
+    });
+    
+    // Ensure header visibility is correct on page load
+    window.addEventListener('load', function() {
+        const header = document.querySelector('header');
+        
+        if (window.scrollY > 100) {
+            header.classList.remove('hidden');
+        } else {
+            header.classList.add('hidden');
         }
     });
 });

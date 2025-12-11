@@ -201,7 +201,12 @@ header {
   background-color: var(--primary-black);
  padding: 1rem 0;
  z-index: 1000;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform: translateY(0);
+}
+
+header.hidden {
+  transform: translateY(-100%);
 }
 
 .navbar {
