@@ -6,11 +6,223 @@
     <title>Smoker's Club | Vape & Smoke Shop in Fort Wayne, IN | Coldwater Crossing</title>
     <meta name="description" content="Fort Wayne's premier smoke shop at Coldwater Crossing. Shop vapes, glass, CBD, and accessories. Open Mon-Sat 9AM-7PM, Sun 9AM-5PM. Visit us at 5525 Coldwater Rd.">
     
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://smokersclubfw.com">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="critical.css" as="style">
+    <link rel="preload" href="images/logo-white.svg" as="image">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    
+    <!-- Critical CSS inline -->
+    <style>
+      /* Critical CSS for Above-the-Fold Content */
+      :root {
+        --primary-black: #000000;
+        --mint-vapor-green: #8BF1D1;
+        --chrome-silver: #D1D5D7;
+        --dark-gray: #0a0a0a;
+        --light-gray: #f5f5f5;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        line-height: 1.6;
+        color: var(--white);
+        background-color: var(--primary-black);
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: 'Inter', sans-serif;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+
+      h1 {
+        font-size: clamp(32px, 6vw, 48px);
+        line-height: 1.1;
+      }
+
+      h2 {
+        font-size: clamp(24px, 5vw, 36px);
+        line-height: 1.2;
+        margin-bottom: 2rem;
+      }
+
+      h3 {
+        font-size: clamp(20px, 3vw, 24px);
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: clamp(16px, 2vw, 18px);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Age Verification Gate */
+      .age-gate-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99;
+      }
+
+      /* Header & Navigation */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-black);
+        padding: 1rem 0;
+        z-index: 1000;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        height: 100vh;
+        background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+        background-size: 200% 200%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        animation: gradientShift 15s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        padding: 0 20px;
+      }
+
+      .hero-headline {
+        font-size: clamp(28px, 5vw, 48px);
+        margin-bottom: 1rem;
+        color: var(--white);
+        text-shadow: 0 2px 20px rgba(139, 241, 209, 0.3);
+      }
+
+      .cta-button {
+        background: linear-gradient(135deg, #8BF1D1 0%, #6DD4B5 100%);
+        color: var(--primary-black);
+        border: none;
+        padding: 16px 32px;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 15px rgba(139, 241, 209, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-button::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .cta-button:hover::after {
+        width: 300px;
+        height: 300px;
+      }
+
+      /* Mobile Sticky CTA Bar */
+      .mobile-sticky-bar {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-black);
+        border-top: 2px solid var(--mint-vapor-green);
+        display: flex;
+        z-index: 1000;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .mobile-sticky-bar {
+          display: flex;
+        }
+        
+        .hero-headline {
+          font-size: clamp(24px, 6vw, 32px);
+        }
+        
+        h2 {
+          font-size: clamp(20px, 5vw, 28px);
+        }
+        
+        p {
+          font-size: clamp(14px, 2vw, 16px);
+        }
+      }
+
+      /* Accessibility & Focus */
+      a:focus,
+      button:focus,
+      input:focus {
+        outline: 2px solid var(--mint-vapor-green);
+        outline-offset: 2px;
+      }
+    </style>
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    
     <!-- Schema.org markup for Google -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "TobaccoStore",
       "name": "Smoker's Club",
       "legalName": "JYS Junior DBA Smoker's Club",
       "alternateName": "Smoker's Club Fort Wayne",
@@ -46,13 +258,22 @@
         "longitude": -85.1042
       },
       "priceRange": "$$",
-      "areaServed": "Fort Wayne",
+      "areaServed": {
+        "@type": "City",
+        "name": "Fort Wayne",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "Indiana"
+        }
+      },
+      "hasMap": "https://maps.google.com/?q=5525+Coldwater+Rd",
+      "additionalType": ["VapeShop", "CigarStore", "HeadShop"],
       "keywords": "Fort Wayne smoke shop, Coldwater Rd vape shop, Fort Wayne vape store, Indiana smoke accessories, CBD Fort Wayne, cigars Fort Wayne, smoke shop Coldwater Crossing, best vape shop Fort Wayne",
       "slogan": "Fort Wayne's Modern Smoke & Vape Destination"
     }
     </script>
     
-    <!-- FAQ Schema for voice search -->
+    <!-- Enhanced FAQ Schema for voice search -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -94,17 +315,123 @@
     }
     </script>
     
+    <!-- Product Schema for Premium Tobacco -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "@id": "#premium-tobacco",
+      "name": "Premium Tobacco Products",
+      "description": "Carefully curated selection of premium tobacco products",
+      "category": "Tobacco Products",
+      "brand": {
+        "@type": "Organization",
+        "name": "Smoker's Club"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
+    <!-- Product Schema for Quality Glass -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "@id": "#quality-glass",
+      "name": "Quality Glass Products",
+      "description": "Hand-selected glass pieces from renowned artisans",
+      "category": "Glass Accessories",
+      "brand": {
+        "@type": "Organization",
+        "name": "Smoker's Club"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
+    <!-- Product Schema for CBD Products -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "@id": "#cbd",
+      "name": "CBD Products",
+      "description": "Lab-tested CBD products from trusted manufacturers",
+      "category": "CBD Products",
+      "brand": {
+        "@type": "Organization",
+        "name": "Smoker's Club"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://smokersclubfw.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Products",
+          "item": "https://smokersclubfw.com#products"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Premium Tobacco",
+          "item": "https://smokersclubfw.com#premium-tobacco"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Quality Glass",
+          "item": "https://smokersclubfw.com#quality-glass"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "CBD Products",
+          "item": "https://smokersclubfw.com#cbd"
+        }
+      ]
+    }
+    </script>
+    
     <!-- Open Graph tags for social sharing -->
     <meta property="og:title" content="Smoker's Club | Vape & Smoke Shop in Fort Wayne, IN">
-    <meta property="og:description" content="Fort Wayne's premier smoke shop at Coldwater Crossing. Shop vapes, glass, CBD, and accessories.">
+    <meta property="og:description" content="Fort Wayne's premier smoke shop at Coldwater Crossing. Shop vapes, glass, CBD, and accessories. Open Mon-Sat 9AM-7PM, Sun 9AM-5PM.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://smokersclubfw.com">
     <meta property="og:image" content="https://smokersclubfw.com/images/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Smoker's Club">
     
     <!-- Twitter Card tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Smoker's Club | Vape & Smoke Shop in Fort Wayne, IN">
-    <meta name="twitter:description" content="Fort Wayne's premier smoke shop at Coldwater Crossing. Shop vapes, glass, CBD, and accessories.">
+    <meta name="twitter:description" content="Fort Wayne's premier smoke shop at Coldwater Crossing. Shop vapes, glass, CBD, and accessories. Open Mon-Sat 9AM-7PM, Sun 9AM-5PM.">
     <meta name="twitter:image" content="https://smokersclubfw.com/images/logo.png">
     
     <!-- Favicon -->
@@ -117,9 +444,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Age Verification Modal -->

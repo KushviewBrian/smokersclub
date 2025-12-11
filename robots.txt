@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://smokersclubfw.com/sitemap.xml
+
+# Crawl-delay: 1 # Uncomment if you want to limit crawl rate
+
+# Specific disallows (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Host directive (Google Search Console)
+Host: https://smokersclubfw.com

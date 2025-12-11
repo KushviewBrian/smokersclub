@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert('REMINDER: 21+ ONLY - Valid ID Required Upon Entry');
                 }
             });
-        }, 1000);
+        }, 100);
         
         // Hide age gate with fade out effect
         ageGate.style.opacity = '0';
@@ -86,6 +86,19 @@ document.addEventListener('DOMContentLoaded', function() {
         
         observer.observe(footer);
     }
+    
+    // Initialize scroll animations
+    initScrollAnimations();
+    
+    // Add scroll event listener for header background change
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+        } else {
+            header.style.backgroundColor = 'var(--primary-black)';
+        }
+    });
 });
 
 // Function to update live hours status
@@ -147,17 +160,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     productCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px)';
+            this.style.transform = 'translateY(-8px) scale(1.02)';
             this.style.borderColor = '#8BF1D1';
-            this.style.boxShadow = '0 8px 25px rgba(139, 241, 209, 0.2)';
-            this.style.backgroundColor = '#0a0a0a';
+            this.style.boxShadow = '0 12px 30px rgba(139, 241, 209, 0.3)';
+            this.style.background = 'linear-gradient(145deg, #0a0a0a, #0f0f0f)';
         });
         
         card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
+            this.style.transform = 'translateY(0) scale(1)';
             this.style.borderColor = 'transparent';
             this.style.boxShadow = 'none';
-            this.style.backgroundColor = '#000000';
+            this.style.background = 'linear-gradient(145deg, #0000, #0a0a0a)';
         });
     });
 });
@@ -171,8 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         question.addEventListener('click', function() {
             // Toggle the answer visibility
-            const answer = this.nextElementSibling;
-            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+            item.classList.toggle('active');
         });
     });
 });
@@ -271,3 +283,52 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(mapIframe);
     }
 });
+
+// Scroll animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Add scroll-reveal class to elements that should animate
+    const elementsToAnimate = document.querySelectorAll(
+        '.product-card, .benefit-block, .review-quote, .faq-item, .location-map, .product-detail-content'
+    );
+    
+    elementsToAnimate.forEach(el => {
+        el.classList.add('scroll-reveal');
+        observer.observe(el);
+    });
+}
+
+// Add smooth scroll behavior for better UX
+if ('scrollBehavior' in document.documentElement.style) {
+    // Native smooth scrolling supported
+} else {
+    // Fallback for older browsers
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const offsetTop = targetElement.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
